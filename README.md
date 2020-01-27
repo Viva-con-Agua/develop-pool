@@ -10,7 +10,7 @@ the first time the network is started, account and oauthclients must be created.
 # setup dev
 
 `nginx-pool` needs a route to your dev server. These are set up in `volume/nginx-pool/conf/pool2.upstream`
-uses the external id of the home network. Not localhost!! 
+uses the external ip of your home network. Not localhost!! 
 if `pool2.upstream` is set, you have to restart the `nginx-pool`.
 `docker-compose restart nginx-pool`
 

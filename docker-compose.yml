@@ -1,0 +1,142 @@
+##
+# docker-compose file for Viva con Agua Pool2 development
+##
+
+version: '3'
+
+services:
+ ##
+  # Pool fontend docker
+  ##
+  nginx-pool:
+    image: nginx:1.13.7
+    container_name: nginx-pool
+    restart: unless-stopped
+    volumes:
+      - ./volumes/nginx-pool/conf/:/etc/nginx/conf.d/
+    ports:
+      - 80:80
+    networks:
+      pool-network:
+        ipv4_address: 172.2.10.2
+  
+  arise:
+    image: vivaconagua/arise:develop
+    container_name: arise
+    restart: unless-stopped
+    networks:
+      pool-network:
+        ipv4_address: 172.2.50.1
+
+       
+  stream-frontend:
+    image: vivaconagua/stream-frontend:develop
+    container_name: stream-frontend
+    restart: unless-stopped
+    networks:
+      pool-network:
+        ipv4_address: 172.2.50.2
+   
+  drops:
+    image: vivaconagua/drops:develop
+    container_name: drops
+    restart: unless-stopped
+    volumes:
+      - ./volumes/drops/application.conf:/opt/docker/conf/application.conf
+    networks:
+      pool-network:
+        ipv4_address: 172.2.100.1
+
+  stream-backend:
+    image: vivaconagua/stream-backend:develop
+    container_name: stream-backend
+    restart: unless-stopped
+    volumes:
+      - ./volumes/stream-backend/application.conf:/opt/docker/conf/application.conf
+    networks:
+      pool-network:
+        ipv4_address: 172.2.100.2
+
+  dispenser:
+    image: vivaconagua/dispenser:develop
+    container_name: dispenser
+    restart: unless-stopped
+    volumes:
+      - ./volumes/dispenser/application.conf:/opt/docker/conf/application.conf
+      - ./volumes/dispenser/navigations/:/opt/docker/conf/navigation/jsons/
+    networks:
+      pool-network:
+        ipv4_address: 172.2.150.1
+
+  nats:
+    image: nats:1.0.6
+    container_name: pool-nats
+    restart: unless-stopped
+    networks:
+      pool-network:
+        ipv4_address: 172.2.150.2
+  
+  # Database
+  drops-database:
+     image: mariadb
+     container_name: drops-database
+     environment: 
+      - MYSQL_DATABASE=drops 
+      - MYSQL_USER=drops
+      - MYSQL_PASSWORD=drops 
+      - MYSQL_ROOT_PASSWORD=yes 
+     restart: unless-stopped
+     volumes: 
+       - ./volumes/drops-database/mysql/:/var/lib/mysql/
+     networks:
+       pool-network:
+         ipv4_address: 172.2.200.1
+
+  stream-database:
+     image: mariadb
+     container_name: stream-database
+     environment: 
+      - MYSQL_DATABASE=stream 
+      - MYSQL_USER=stream
+      - MYSQL_PASSWORD=stream 
+      - MYSQL_ROOT_PASSWORD=yes 
+     restart: unless-stopped
+     volumes: 
+       - ./volumes/stream-database/mysql/:/var/lib/mysql/
+     networks:
+       pool-network:
+         ipv4_address: 172.2.200.2
+
+  waves-database:
+     image: mysql
+     container_name: waves-database
+     environment: 
+      - MYSQL_DATABASE=waves 
+      - MYSQL_USER=waves
+      - MYSQL_PASSWORD=waves 
+      - MYSQL_ROOT_PASSWORD=yes 
+     restart: unless-stopped
+     volumes: 
+       - ./volumes/waves-database/mysql/:/var/lib/mysql/
+     networks:
+       pool-network:
+         ipv4_address: 172.2.200.3
+
+  dispenser-database:
+    image: mongo
+    container_name: dispenser-database
+    restart: always
+    volumes: 
+       - ./volumes/dispenser-database/mongodb/:/data/db/
+    networks:
+      pool-network:
+        ipv4_address: 172.2.220.1
+
+
+# start docker in pool-network
+networks:
+  pool-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.2.0.0/16

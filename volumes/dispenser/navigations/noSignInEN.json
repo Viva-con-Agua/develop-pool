@@ -1,0 +1,42 @@
+{
+  "name":"no-SignInEN",
+  "entrys": [
+    {
+      "label": { "de_DE": "einloggen", "en_EN": "sign in" },
+      "render":true,
+      "url":"/arise/#/signin"
+    },
+    {
+      "label": { "de_DE": "mitmachen", "en_EN": "sign up" },
+      "render":true,
+      "url":"/arise/#/signup"
+    },
+    {
+      "label": { "de_DE": "faq", "en_EN": "faq" },
+      "render":true,
+      "url":"/pool/faq/",
+      "entrys": [
+        {
+          "label": { "de_DE": "allgemein", "en_EN": "general" },
+          "render":true,
+          "url":"/pool/faq/"
+        },
+        {
+          "label": { "de_DE": "festival", "en_EN": "festival" },
+          "render":true,
+          "url":"/pool/faq/festivals/"
+        },
+        {
+          "label": { "de_DE": "goldeimer", "en_EN": "goldeimer" },
+          "render":true,
+          "url":"/pool/faq/goldeimer/"
+        },
+        {
+          "label": { "de_DE": "pool", "en_EN": "pool" },
+          "render":true,
+          "url":"/pool/faq/pool/"
+        }
+      ]
+    }
+  ]
+}

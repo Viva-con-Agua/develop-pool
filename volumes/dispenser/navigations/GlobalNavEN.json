@@ -1,0 +1,528 @@
+{
+
+    "name":"GlobalNavEN",
+
+    "involved":[
+
+      "/arise/#/users",
+
+      "/arise/#/profile",
+
+      "/arise/#/oauth",
+
+      "/arise/#/tasks",
+
+      "/arise/#/crews",
+
+      "/arise/#/out"
+
+    ],
+
+    "entrys": [
+      {
+	     "lable":"wiki",
+	     "render": true,
+	     "url": "/wiki",
+	     "permission":[{"role": "supporter"}]
+      },
+      {
+
+        "lable":"profile",
+
+        "render":true,
+
+        "url":"/arise/#/profile",
+
+        "permission": [{ "role": "supporter" }]
+
+      },
+
+      {
+
+        "lable":"actions",
+
+        "render":true,
+
+        "url":"/pool/",
+
+        "permission": [{ "role": "supporter" }],
+
+        "entrys": [
+
+          {
+
+            "lable":"available actions",
+
+            "render":true,
+
+            "url":"/pool/",
+
+            "permission": [{ "role": "supporter" }]
+
+          },
+
+          {
+
+            "lable":"my actions",
+
+            "render":true,
+
+            "url":"/pool/action/meine-actions/",
+
+            "permission": [{ "role": "supporter" }]
+
+          },
+	  {
+            "lable":"available camps",
+	    "render":true,
+	    "url":"/pool/camps/",
+	    "permission": [{ "role": "supporter"}]
+	  }
+
+        ]
+
+      },
+
+      {
+
+        "lable":"office",
+
+        "render":true,
+
+        "url":"/arise/#/users",
+
+        "permission": [{ "role": "VolunteerManager" },{ "role": "employee" },{ "role": "admin" }],
+
+        "entrys": [
+
+          {
+
+            "lable":"users",
+
+            "render":true,
+
+            "url":"/arise/#/users",
+
+            "permission": [{ "role": "VolunteerManager" },{ "role": "employee" },{ "role": "admin" }]
+
+          },
+
+          {
+
+            "lable":"action management",
+
+            "render":true,
+
+            "url": "/pool/wp-admin/admin.php?page=vca-asm-actions",
+
+            "permission": [{ "role": "VolunteerManager", "pillars": ["operation"] },{ "role": "employee" },{ "role": "admin" }],
+
+            "entrys": [
+
+              {
+
+                "lable":"festivals",
+
+                "render":true,
+
+                "url":"/pool/wp-admin/edit.php?post_type=festival",
+
+                "permission": [{ "role": "VolunteerManager", "pillars": ["operation"] },{ "role": "employee" },{ "role": "admin" }]
+
+              },
+
+              {
+
+                "lable":"concerts",
+
+                "render":true,
+
+                "url":"/pool/wp-admin/edit.php?post_type=concert",
+
+                "permission": [{ "role": "VolunteerManager", "pillars": ["operation"] },{ "role": "employee" },{ "role": "admin" }]
+
+              },
+
+              {
+
+                "lable":"misc",
+
+                "render":true,
+
+                "url":"/pool/wp-admin/edit.php?post_type=miscactions",
+
+                "permission": [{ "role": "VolunteerManager", "pillars": ["operation"] },{ "role": "employee" },{ "role": "admin" }]
+
+              },
+
+              {
+
+                "lable":"slots",
+
+                "render":true,
+
+                "url":"/pool/wp-admin/admin.php?page=vca-asm-actions-slot-allocation",
+
+                "permission": [{ "role": "VolunteerManager", "pillars": ["operation"] },{ "role": "employee" },{ "role": "admin" }]
+
+              }
+
+            ]
+
+          },
+
+          {
+
+            "lable":"network management",
+
+            "render": true,
+
+            "url":"/wp-admin/admin.php?page=vca-asm-network",
+
+            "permission": [{ "role": "employee" },{ "role": "admin" }],
+
+            "entrys": [
+
+              {
+
+                "lable":"crews",
+
+                "render":true,
+
+                "url":"/arise/#/crews",
+
+                "permission": [{ "role": "employee" },{ "role": "admin" }]
+
+              },
+
+              {
+
+                "lable":"network gatherings",
+
+                "render":true,
+
+                "url":"/pool/wp-admin/edit.php?post_type=nwgathering",
+
+                "permission": [{ "role": "employee" },{ "role": "admin" }]
+
+              },
+
+              {
+
+                "lable":"slots",
+
+                "render":true,
+
+                "url":"/pool/wp-admin/admin.php?page=vca-asm-network-slot-allocation",
+
+                "permission": [{ "role": "employee" },{ "role": "admin" }]
+
+              }
+
+            ]
+
+          },
+
+          {
+
+            "lable":"goldeimer management",
+
+            "render": true,
+
+            "url":"/wp-admin/admin.php?page=vca-asm-goldeimer",
+
+            "permission": [{ "role": "employee" },{ "role": "admin" }],
+
+            "entrys": [
+
+              {
+
+                "lable":"goldeimer festivals",
+
+                "render":true,
+
+                "url":"/pool/wp-admin/edit.php?post_type=goldeimerfestival",
+
+                "permission": [{ "role": "employee" },{ "role": "admin" }]
+
+              },
+
+              {
+
+                "lable":"slots",
+
+                "render":true,
+
+                "url":"/pool/wp-admin/admin.php?page=vca-asm-goldeimer-slot-allocation",
+
+                "permission": [{ "role": "employee" },{ "role": "admin" }]
+
+              }
+
+            ]
+
+          },
+
+          {
+
+            "lable":"email management",
+
+            "render": true,
+
+            "url":"/wp-admin/admin.php?page=vca-asm-emails",
+
+            "permission": [{ "role": "VolunteerManager", "pillars": ["operation", "network", "education"] },{ "role": "employee" },{ "role": "admin" }],
+
+            "entrys": [
+
+              {
+
+                "lable":"compose e-mail",
+
+                "render":true,
+
+                "url":"/pool/wp-admin/admin.php?page=vca-asm-compose",
+
+                "permission": [{ "role": "VolunteerManager", "pillars": ["operation", "network", "education"] },{ "role": "employee" },{ "role": "admin" }]
+
+              },
+
+              {
+
+                "lable":"e-mail outbox",
+
+                "render":true,
+
+                "url":"/pool/wp-admin/admin.php?page=vca-asm-outbox",
+
+                "permission": [{ "role": "VolunteerManager", "pillars": ["operation", "network", "education"] },{ "role": "employee" },{ "role": "admin" }]
+
+              },
+
+              {
+
+                "lable":"sent e-mails",
+
+                "render":true,
+
+                "url":"/pool/wp-admin/admin.php?page=vca-asm-emails",
+
+                "permission": [{ "role": "VolunteerManager", "pillars": ["operation", "network", "education"] },{ "role": "employee" },{ "role": "admin" }]
+
+              }
+
+            ]
+
+          },
+
+          {
+
+            "lable": "finances management",
+
+            "render": true,
+
+            "url": "/wp-admin/admin.php?page=vca-asm-emails",
+
+            "permission": [{ "role": "VolunteerManager", "pillars": ["finance"] },{ "role": "employee" },{ "role": "admin" }],
+
+            "entrys": [
+
+              {
+
+                "lable": "general",
+
+                "render": true,
+
+                "url": "/pool/wp-admin/admin.php?page=vca-asm-finances",
+
+                "permission": [{ "role": "VolunteerManager", "pillars": ["finance"] },{ "role": "employee" },{ "role": "admin" }]
+
+              },
+
+              {
+
+                "lable": "takings",
+
+                "render": true,
+
+                "url": "/stream/#/takings",
+
+                "permission": [{ "role": "VolunteerManager", "pillars": ["finance"] },{ "role": "employee" },{ "role": "admin" }]
+
+              },
+
+              {
+
+                "lable": "deposits",
+
+                "render": true,
+
+                "url": "/stream/#/deposits",
+
+                "permission": [{ "role": "VolunteerManager", "pillars": ["finance"] },{ "role": "employee" },{ "role": "admin" }]
+
+              },
+
+              {
+
+                "lable": "settings",
+
+                "render": true,
+
+                "url": "/pool/wp-admin/admin.php?page=vca-asm-finances-settings",
+
+                "permission": [{ "role": "employee", "pillars": ["finance"] },{ "role": "admin" }]
+
+              }
+
+            ]
+
+          }
+
+        ]
+
+      },
+
+      {
+
+        "lable":"admin",
+
+        "render":true,
+
+        "url":"/arise/#/oauth",
+
+        "permission": [{ "role": "admin" }],
+
+        "entrys": [
+
+          {
+
+            "lable":"oauth clients",
+
+            "render":true,
+
+            "url":"/arise/#/oauth",
+
+            "permission": [{ "role": "admin" }]
+
+          },
+
+          {
+
+            "lable":"pool settings",
+
+            "render":true,
+
+            "url":"/pool/wp-admin/admin.php?page=vca-asm-settings",
+
+            "permission": [{ "role": "admin" }]
+
+          },
+
+          {
+
+            "lable":"pool mode",
+
+            "render":true,
+
+            "url":"/pool/wp-admin/admin.php?page=vca-asm-mode-settings",
+
+            "permission": [{ "role": "admin" }]
+
+          },
+
+          {
+
+            "lable":"delete inactives",
+
+            "render":true,
+
+            "url":"/pool/wp-admin/admin.php?page=vca-asm-update",
+
+            "permission": [{ "role": "admin" }]
+
+          }
+
+        ]
+
+      },
+
+      {
+
+        "lable":"faq",
+
+        "render":true,
+
+        "url":"/pool/faq/",
+
+        "permission": [{ "role": "supporter" }],
+
+        "entrys": [
+
+          {
+
+            "lable":"general",
+
+            "render":true,
+
+            "url":"/pool/faq/",
+
+            "permission": [{ "role": "supporter" }]
+
+          },
+
+          {
+
+            "lable":"festival",
+
+            "render":true,
+
+            "url":"/pool/faq/festivals/",
+
+            "permission": [{ "role": "supporter" }]
+
+          },
+
+          {
+
+            "lable":"goldeimer",
+
+            "render":true,
+
+            "url":"/pool/faq/goldeimer/",
+
+            "permission": [{ "role": "supporter" }]
+
+          },
+
+          {
+
+            "lable":"pool",
+
+            "render":true,
+
+            "url":"/pool/faq/pool/",
+
+            "permission": [{ "role": "supporter" }]
+
+          }
+
+        ]
+
+      },
+
+      {
+
+        "lable":"sign out",
+
+        "render":true,
+
+        "url":"/arise/#/out",
+
+        "permission": [{ "role": "supporter" }]
+
+      }
+
+    ]
+
+}

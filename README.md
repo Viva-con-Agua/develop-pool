@@ -1,10 +1,23 @@
-# devTools
-For Pool² developer
+# develop-pool
+For develop pool microservices
 
 ## use
 install docker-compose
+# start
+run `docker-compose up -d`
+the first time the network is started, account and oauthclients must be created. (script follows)
 
-## redis
-run `docker-compose up -d redis`
-## database
-run `docker-compose up -d drops-database && mysql -u drops -pdrops -h 172.2.200.1 drops < drops-database.sql`
+# setup dev
+
+`nginx-pool` needs a route to your dev server. These are set up in `volume/nginx-pool/conf/pool2.upstream`
+uses the external id of the home network. Not localhost!! 
+if `pool2.upstream` is set, you have to restart the `nginx-pool`.
+`docker-compose restart nginx-pool`
+
+
+# clean
+
+`docker-compose down`
+
+# more
+https://docs.docker.com/compose/compose-file/

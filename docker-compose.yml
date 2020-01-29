@@ -36,11 +36,27 @@ services:
     networks:
       pool-network:
         ipv4_address: 172.2.50.2
+
+  waves-frontend:
+    image: vivaconagua/waves-frontend:develop
+    container_name: waves-frontend
+    restart: unless-stopped
+    networks:
+      pool-network:
+        ipv4_address: 172.2.50.3
+
+###########
+#
+# backend
+#
+########### 
    
   drops:
     image: vivaconagua/drops:develop
     container_name: drops
     restart: unless-stopped
+    links: 
+      - drops-database
     volumes:
       - ./volumes/drops/application.conf:/opt/docker/conf/application.conf
     networks:
@@ -51,16 +67,40 @@ services:
     image: vivaconagua/stream-backend:develop
     container_name: stream-backend
     restart: unless-stopped
+    links:
+      - stream-database
     volumes:
       - ./volumes/stream-backend/application.conf:/opt/docker/conf/application.conf
     networks:
       pool-network:
         ipv4_address: 172.2.100.2
+  
+  waves-backend:
+    image: vivaconagua/waves-backend:develop
+    container_name: waves-backend
+    restart: unless-stopped
+    links:
+     - waves-database
+    environment:
+      - HOST=172.2.200.3
+      - USER_NAME=waves
+      - PASSWORD=waves
+      - DATABASE=waves 
+      - OAUTH_BASE_URI=http://172.2.10.1
+      - CLIENT_ID=wavesex
+      - CLIENT_SECRET=waves
+      - REDIRECT_URI=http://172.2.10.1/waves/api/v1/oauth
+      - JWT_SECRET=“as0d9a08d0a9d8a0sd”
+    networks:
+      pool-network:
+        ipv4_address: 172.2.100.3
 
   dispenser:
     image: vivaconagua/dispenser:develop
     container_name: dispenser
     restart: unless-stopped
+    links:
+      - dispenser-database
     volumes:
       - ./volumes/dispenser/application.conf:/opt/docker/conf/application.conf
       - ./volumes/dispenser/navigations/:/opt/docker/conf/navigation/jsons/
@@ -108,7 +148,9 @@ services:
          ipv4_address: 172.2.200.2
 
   waves-database:
-     image: mysql
+     image: mariadb
+     #     build: ./waves-database
+     command: --init-file /tmp/init.sql
      container_name: waves-database
      environment: 
       - MYSQL_DATABASE=waves 
@@ -117,6 +159,7 @@ services:
       - MYSQL_ROOT_PASSWORD=yes 
      restart: unless-stopped
      volumes: 
+       - ./volumes/waves-database/init.sql:/tmp/init.sql
        - ./volumes/waves-database/mysql/:/var/lib/mysql/
      networks:
        pool-network:

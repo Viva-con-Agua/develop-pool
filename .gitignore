@@ -1,4 +1,4 @@
-volumes/drops-database/mysql/.
-volumes/waves-database/mysql/.
-volumes/dispenser-database/mongodb/.
-volumes/stream-database/mysql/.
+volumes/drops-database/mysql
+volumes/waves-database/mysql
+volumes/dispenser-database/mongodb
+volumes/stream-database/mysql

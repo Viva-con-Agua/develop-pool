@@ -1,5 +1,14 @@
 #!/bin/bash
 
+
+##
+# reset up service 
+##
+
+reset_docker(){
+  docker-compose rm -s -f $1 && docker-compose up -d $1
+}
+
 ##
 # Pull docker and update
 ##
@@ -16,18 +25,45 @@ set_navigation(){
 }
 
 ##
+# Create database dump
+##
+
+backup_database(){
+  docker exec -i $1 sh -c 'exec mysqldump --all-databases -uroot -pyes' > ./dumps/${1}/${2}.sql &&
+  echo "database successful bachuped"
+}
+
+##
+# Restore database dump
+##
+
+restore_database(){
+  docker exec -i $1 sh -c 'exec mysql -uroot -pyes' < ./dumps/${1}/${2}.sql &&
+  echo "database successful restored"
+}
+
+
+##
 # Print help
 ##
 help(){
   echo "Usage: ./please <command> <serviceName / version>"
   echo "Commands: "
-  echo " initNav                         # set navigation"
-  echo " update                          # pull and update all services"
-  echo " update <serviceName>            # pull and update given service"
+  echo " initNav                              # set navigation"
+  echo " reset                                # reset all services"
+  echo " reset    <serviceName                # reset given service"
+  echo " update                               # pull and update all services"
+  echo " update   <serviceName>               # pull and update given service"
+  echo " backup   <serviceName> <backupName>  # backup service database"
+  echo " restore  <serviceName> <backupName>  # restore database backup"
+  echo " help                                 # show this page"
 }
 
 case $1 in
   update) update_docker $2;;
   initNav) set_navigation;;
+  reset) reset_docker $2;;
+  backup) backup_database $2 $3;;
+  restore) restore_database $2 $3;;
   *) help
 esac

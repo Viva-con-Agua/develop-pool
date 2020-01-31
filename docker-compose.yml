@@ -46,7 +46,7 @@ services:
         ipv4_address: 172.2.100.1
   
   drops-database:
-     image: mariadb
+     image: mariadb:10.3
      container_name: drops-database
      environment: 
       - MYSQL_DATABASE=drops 

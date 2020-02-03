@@ -161,7 +161,7 @@ services:
       - dispenser-database
     volumes:
       - ./volumes/dispenser/application.conf:/opt/docker/conf/application.conf
-      - ./volumes/dispenser/navigations/:/opt/docker/conf/navigation/jsons/
+      - ./navigation/:/opt/docker/conf/navigation/jsons/
     networks:
       pool-network:
         ipv4_address: 172.2.100.4

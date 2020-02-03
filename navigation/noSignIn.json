@@ -1,0 +1,42 @@
+{
+   "name":"default",
+   "entrys": [
+      {
+         "lable":"reinloggen",
+         "render":true,
+         "url":"/arise/#/signin"
+      },
+      {
+         "lable":"mitmachen",
+         "render":true,
+         "url":"/arise/#/signup"
+      },
+	  {
+        "lable":"faq",
+        "render":true,
+        "url":"/pool/faq/",
+        "entrys": [
+          {
+            "lable":"allgemein",
+            "render":true,
+            "url":"/pool/faq/"
+          },
+          {
+            "lable":"festival",
+            "render":true,
+            "url":"/pool/faq/festivals/"
+          },
+          {
+            "lable":"goldeimer",
+            "render":true,
+            "url":"/pool/faq/goldeimer/"
+          },
+          {
+            "lable":"pool",
+            "render":true,
+            "url":"/pool/faq/pool/"
+          }
+        ]
+      }
+   ]
+}

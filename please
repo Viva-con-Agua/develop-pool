@@ -30,7 +30,7 @@ set_navigation(){
 
 backup_database(){
   docker exec -i $1 sh -c 'exec mysqldump --all-databases -uroot -pyes' > ./dumps/${1}/${2}.sql &&
-  echo "database successful bachuped"
+  echo "database backup successful"
 }
 
 ##

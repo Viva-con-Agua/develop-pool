@@ -20,7 +20,7 @@ We save our dumps in the `dumps/` directory. Each database has a folder there. T
 ## use
 # connect dev server
 The pool can be reached at `172.2.20.2`. The routes are defined in `routes/nginx-pool/pool2.location` and all upstreams in `routes/nginx-pool/pool2.upstream`. 
-There is no way for the Nginx to reach the `localhost` to connect an develop server. Therefore you have to take your external ip address.
+There is no way for the Nginx to reach the `localhost` to connect an develop server. Therefore you have to take your external ip address like `192.168.2.34`.
 Edit the `pool2.upstream` and restart nginx via `docker-compose restart nginx-pool`.
 
 # database usage

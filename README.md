@@ -1,23 +1,34 @@
 # develop-pool
 For develop pool microservices
 
+## set up
+First you have to install [docker](https://docs.docker.com/install/) and [docker-compose](https://docs.docker.com/compose/install/).
+Then set up the Pool² for developers.
+```
+  docker-compose up -d
+```
+It may happen that some dockers do not start properly. This is mostly due to drops and stream trying to reach the database while it is still starting.
+Check with `docker ps --filter status=restarting` for restarting dockers. You can simple rebuild docker via `./please reset <serviceName>`.
+
+Next you should initialize the databases. 
+```
+  ./please initNav && ./please restore drops-database default
+```
+
+We save our dumps in the `dumps/` directory. Each database has a folder there. The default dump for each service is named `default.sql`.
+
 ## use
-install docker-compose
-# start
-run `docker-compose up -d`
-the first time the network is started, account and oauthclients must be created. (script follows)
+# connect dev server
+The pool can be reached at `172.2.20.2`. The routes are defined in `routes/nginx-pool/pool2.location` and all upstreams in `routes/nginx-pool/pool2.upstream`. 
+There is no way for the Nginx to reach the `localhost` to connect an develop server. Therefore you have to take your external ip address.
+Edit the `pool2.upstream` and restart nginx via `docker-compose restart nginx-pool`.
 
-# setup dev
+# database usage
 
-`nginx-pool` needs a route to your dev server. These are set up in `volume/nginx-pool/conf/pool2.upstream`
-uses the external ip of your home network. Not localhost!! 
-if `pool2.upstream` is set, you have to restart the `nginx-pool`.
-`docker-compose restart nginx-pool`
+# docker-compose.yml
 
+# custom navigation
 
 # clean
 
 `docker-compose down`
-
-# more
-https://docs.docker.com/compose/compose-file/

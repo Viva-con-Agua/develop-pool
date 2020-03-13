@@ -1,12 +1,12 @@
 # develop-pool
 For develop pool microservices
 
-## set up
+# set up
 
-# preparation
+## preparation
 First you have to install [docker](https://docs.docker.com/install/) and [docker-compose](https://docs.docker.com/compose/install/).
 
-# install
+## install
 Then set up the Pool² for developers. Docker container will be downloaded and started with:
 ```
   docker-compose up -d
@@ -22,23 +22,23 @@ Next you should initialize the navigation and the user database.
 ```
 We save our dumps in the `dumps/` directory. Each database has a folder there. The default dump for each service is named `default.sql`.
 
-## useage
+# usage
 
-# connect dev server
+## connect dev server
 The pool can be reached at `172.2.20.2`.
 
-# admin
+## admin
   Username: `admin@pool.org`
   Password: `admin`
 
-# local development
+## local development
 The routes are defined in `routes/nginx-pool/pool2.location` and all upstreams in `routes/nginx-pool/pool2.upstream`. 
 There is no way for the Nginx to reach the `localhost` to connect an develop server. 
 Therefore, to set up the local development of a service, you need to edit the ip addresses of the service in `routes/nginx-pool/pool2.upstream`.
 Find your local external ip address with `ip addr` similar to `192.168.2.34`.
 After editing restart nginx via `docker-compose restart nginx-pool`.
 
-# database usage
+## database usage
 
 To connect to the database, you can run `docker exec -it <docker-container> mysql -u <db-user> -p` and use the default password.
 For example: To connect to the user database of drops run `docker exec -it drops-database mysql -u drops -p` and use the default password.

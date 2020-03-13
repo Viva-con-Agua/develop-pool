@@ -34,9 +34,11 @@ The pool can be reached at `172.2.20.2`.
 ```
 
 ## local development
-The routes are defined in `routes/nginx-pool/pool2.location` and all upstreams in `routes/nginx-pool/pool2.upstream`. 
-There is no way for the Nginx to reach the `localhost` to connect an develop server. 
+The routes are defined in `routes/nginx-pool/pool2.location` and all upstreams in `routes/nginx-pool/pool2.upstream`.
+
+There is no way for the nginx to reach the `localhost` to connect an develop server.
 Therefore, to set up the local development of a service, you need to edit the ip addresses of the service in `routes/nginx-pool/pool2.upstream`.
+
 Find your local external ip address with `ip addr` similar to `192.168.2.34`.
 After editing restart nginx via `docker-compose restart nginx-pool`.
 

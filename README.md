@@ -28,8 +28,10 @@ We save our dumps in the `dumps/` directory. Each database has a folder there. T
 The pool can be reached at `172.2.20.2`.
 
 ## admin
+```
   Username: `admin@pool.org`
   Password: `admin`
+```
 
 ## local development
 The routes are defined in `routes/nginx-pool/pool2.location` and all upstreams in `routes/nginx-pool/pool2.upstream`. 
@@ -49,7 +51,9 @@ The file `docker-compose.yml` describes the names, ip addresses and docker conta
 
 # useful docker commands
   Show the current docker network with `docker inspect developpool_pool-network`
+
   Enter docker container bash with `docker exec -it <docker-container> bash`
+  
   Show logs of docker container with `docker logs <docker-container>`
 
 # custom navigation

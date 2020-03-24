@@ -59,6 +59,7 @@ help(){
   echo " update   <serviceName>               # pull and update given service"
   echo " backup   <serviceName> <backupName>  # backup service database"
   echo " restore  <serviceName> <backupName>  # restore database backup"
+  echo " update-all                           # pull from git and update all docker"
   echo " help                                 # show this page"
 }
 

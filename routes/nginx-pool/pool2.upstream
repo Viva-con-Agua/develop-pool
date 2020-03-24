@@ -1,3 +1,12 @@
+
+###
+# Auth
+##
+
+upstream new-backend {
+  server 192.168.2.121:1323;
+}
+
 #########
 # Drops #
 #########
@@ -15,13 +24,13 @@ upstream drops {
 ########## 
 
 upstream stream-frontend {  
- # server 172.2.50.2:80;
- server 192.168.2.104:8082;
+ server 172.2.50.2:80;
+ # server 192.168.2.121:8082;
 }
 
 upstream stream-backend {
-   server 192.168.2.104:9000;
-  # server 172.2.100.2:9000;
+#   server 192.168.2.121:9000;
+ server 172.2.100.2:9000;
 }
 
 #########

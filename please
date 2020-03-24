@@ -48,6 +48,10 @@ restore_database(){
 
 punch(){
   echo ${1} 'just received a huge roundhouse kick from Chuck Norris. I hope it will remember this and will work correctly now!'
+
+update_all(){
+  git pull && docker-compose pull && docker-compose up -d
+
 }
 
 ##
@@ -64,6 +68,7 @@ help(){
   echo " backup   <serviceName> <backupName>  # backup service database"
   echo " restore  <serviceName> <backupName>  # restore database backup"
   echo " punch                                # Lets punch a service when its not working correctly, just to reduce anger"
+  echo " update-all                           # pull from git and update all docker"
   echo " help                                 # show this page"
 }
 
@@ -74,5 +79,6 @@ case $1 in
   backup) backup_database $2 $3;;
   restore) restore_database $2 $3;;
   punch) punch $2 ;;
+  update-all) update_all;;
   *) help
 esac

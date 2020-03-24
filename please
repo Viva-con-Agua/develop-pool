@@ -42,6 +42,9 @@ restore_database(){
   echo "database successful restored"
 }
 
+update_all(){
+  git pull && docker-compose pull && docker-compose up -d
+}
 
 ##
 # Print help
@@ -56,6 +59,7 @@ help(){
   echo " update   <serviceName>               # pull and update given service"
   echo " backup   <serviceName> <backupName>  # backup service database"
   echo " restore  <serviceName> <backupName>  # restore database backup"
+  echo " update-all                           # pull from git and update all docker"
   echo " help                                 # show this page"
 }
 
@@ -65,5 +69,6 @@ case $1 in
   reset) reset_docker $2;;
   backup) backup_database $2 $3;;
   restore) restore_database $2 $3;;
+  update-all) update_all;;
   *) help
 esac

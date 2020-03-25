@@ -48,7 +48,7 @@ restore_database(){
 
 punch(){
   echo ${1} 'just received a huge roundhouse kick from Chuck Norris. I hope it will remember this and will work correctly now!'
-
+}
 update_all(){
   git pull && docker-compose pull && docker-compose up -d
 

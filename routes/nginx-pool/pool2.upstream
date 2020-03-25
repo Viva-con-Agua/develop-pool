@@ -26,7 +26,7 @@ upstream drops {
 
 upstream stream-frontend {  
  server 172.2.50.2:80;
- # server 192.168.2.121:8082;
+# server 192.168.2.121:8082;
 }
 
 upstream stream-backend {

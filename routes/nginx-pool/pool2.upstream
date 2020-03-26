@@ -3,7 +3,7 @@
 # Auth
 ##
 
-upstream new-backend {
+upstream stream-backend-go {
   server 192.168.2.121:1323;
 }
 

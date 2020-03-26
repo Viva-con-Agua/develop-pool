@@ -7,8 +7,8 @@
 
 location ^~ /auth {
    #Stream backend
-   location /auth/newbackend {
-      proxy_pass http://new-backend;
+   location /auth/stream-backend {
+      proxy_pass http://stream-backend-go;
       proxy_http_version 1.1;
       proxy_set_header   Upgrade $http_upgrade;
       proxy_set_header Connection "upgrade";
@@ -19,13 +19,21 @@ location ^~ /auth {
 location ^~ /api {
    #Stream backend
    location /api/v1 {
-      location /api/v1/newbackend {
-        proxy_pass http://new-backend;
+      location /api/v1/takings {
+        proxy_pass http://stream-backend-go;
         proxy_http_version 1.1;
         proxy_set_header   Upgrade $http_upgrade;
         proxy_set_header Connection "upgrade";
         proxy_set_header   Host $host;
     }
+      location /api/v1/deposits {
+        proxy_pass http://stream-backend-go;
+        proxy_http_version 1.1;
+        proxy_set_header   Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header   Host $host;
+    }
+
    }
 }
 

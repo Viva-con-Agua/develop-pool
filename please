@@ -16,6 +16,9 @@ update_docker(){
   docker-compose pull $1 && docker-compose up -d $1
 }
 
+restart_docker(){
+  docker-compose restart $1
+}
 ##
 # Initialize navigation in dispenser
 ##
@@ -61,6 +64,8 @@ help(){
   echo "Usage: ./please <command> <serviceName / version>"
   echo "Commands: "
   echo " initNav                              # set navigation"
+  echo " restart                              # restart all services"
+  echo " restart  <serviceName>               # restart service"
   echo " reset                                # reset all services"
   echo " reset    <serviceName>               # reset given service"
   echo " update                               # pull and update all services"
@@ -75,6 +80,7 @@ help(){
 case $1 in
   update) update_docker $2;;
   initNav) set_navigation;;
+  restart) restart_docker $2;;
   reset) reset_docker $2;;
   backup) backup_database $2 $3;;
   restore) restore_database $2 $3;;
